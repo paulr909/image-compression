@@ -26,7 +26,9 @@ def compress_resize(file, max_dim, verbose=False):
     newsize = os.stat(os.path.join(os.getcwd(), "Compressed_" + file)).st_size
     percent = (oldsize - newsize) / float(oldsize) * 100
     if verbose:
-        print("File compressed from {0} to {1} or {2}%".format(oldsize, newsize, percent))
+        print(
+            "File compressed from {0} to {1} or {2}%".format(oldsize, newsize, percent)
+        )
     return percent
 
 
@@ -41,7 +43,7 @@ def main():
     tot = 0
     num = 0
     for file in os.listdir(pwd):
-        if os.path.splitext(file)[1].lower() in ('.jpg', '.jpeg'):
+        if os.path.splitext(file)[1].lower() in (".jpg", ".jpeg"):
             num += 1
             tot += compress_resize(file, int(max_dimension), verbose)
     print("Average Compression: %d" % (float(tot) / num))

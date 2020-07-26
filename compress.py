@@ -15,16 +15,18 @@ def compress_me(file, verbose=False):
 
     newsize = os.stat(os.path.join(os.getcwd(), "Compressed_" + file)).st_size
     percent = (oldsize - newsize) / float(oldsize) * 100
-    if (verbose):
-        print("File compressed from {0} to {1} or {2}%".format(oldsize, newsize, percent))
+    if verbose:
+        print(
+            "File compressed from {0} to {1} or {2}%".format(oldsize, newsize, percent)
+        )
     return percent
 
 
 def main():
     verbose = False
     # checks for verbose flag
-    if (len(sys.argv) > 1):
-        if (sys.argv[1].lower() == "-v"):
+    if len(sys.argv) > 1:
+        if sys.argv[1].lower() == "-v":
             verbose = True
 
     # finds present working dir
@@ -33,7 +35,7 @@ def main():
     tot = 0
     num = 0
     for file in os.listdir(pwd):
-        if os.path.splitext(file)[1].lower() in ('.jpg', '.jpeg'):
+        if os.path.splitext(file)[1].lower() in (".jpg", ".jpeg"):
             num += 1
             tot += compress_me(file, verbose)
     print("Average Compression: %d" % (float(tot) / num))
