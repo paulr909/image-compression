@@ -1,1 +1,1 @@
-# Image Compression and Resizing #
+# Bulk Image Compression and Resizing #
